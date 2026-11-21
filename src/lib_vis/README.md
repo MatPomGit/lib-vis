@@ -1,7 +1,5 @@
-# lib_vis: pakiet planowany
+# lib_vis: planowany pakiet Computer Vision
 
-Przechwytywanie, dekodowanie, transformacje i kontrola jakości obrazu oraz strumieni wideo.
+[capture](capture/README.md) · [formats](formats/README.md) · [transforms](transforms/README.md) · [calibration](calibration/README.md) · [features](features/README.md) · [detection](detection/README.md) · [segmentation](segmentation/README.md) · [geometry](geometry/README.md) · [quality](quality/README.md) · [sync](sync/README.md).
 
-Moduły: [capture](capture/README.md), [formats](formats/README.md), [transforms](transforms/README.md), [quality](quality/README.md), [sync](sync/README.md).
-
-Publiczny kontrakt jest obecnie planem: [docs/contracts.md](../../docs/contracts.md). Brak implementacji, testów backendu i release.
+`lib-vis` tworzy obserwacje geometryczne, a `lib-track` utrzymuje ich tożsamość między klatkami. [Kontrakt](../../docs/contracts.md). **Brak wykonywalnego kodu.**

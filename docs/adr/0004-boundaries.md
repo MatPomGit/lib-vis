@@ -1,21 +1,21 @@
-# ADR-0004: odpowiedzialność lib-vis
+# ADR-0004: granice Computer Vision
 
 Data: 2026-11-21  
 Status: proposed
 
 ## Kontekst
 
-Przechwytywanie, dekodowanie, transformacje i kontrola jakości obrazu oraz strumieni wideo. Bez odrębnej granicy repozytorium podobne funkcje byłyby powielane w aplikacjach i bibliotekach.
+Akwizycja i klasyczne przetwarzanie obrazu często wymagają tych samych metadanych, kalibracji i transformacji. Detekcja obiektów i segmentacja dostarczają obserwacji, lecz nie są równoważne trackingowi.
 
-## Proponowana decyzja
+## Propozycja
 
-Przetwarzanie obrazu i klatek bez inferencji językowej/VLM, estymacji ruchu ciała i sterowania urządzeniami. lib-vlm odpowiada za multimodalne modele, lib-track byłby właścicielem trackingu, a prywatny devices za konfiguracje aparatury. Repozytorium utrzymuje jedynie warstwę adaptacji i spójne metadane. Wykorzystuje istniejące SDK/backendy po weryfikacji ich licencji. Szczegóły jednostek: piksele, klatki/s, sekundy monotoniczne, układ współrzędnych obrazu (początek w lewym górnym rogu).
+`lib-vis` odpowiada za warstwę computer vision: formaty obrazów, transformacje, parametry kamer, cechy, detekcję i segmentację pojedynczych klatek oraz podstawowe pomiary geometryczne. `lib-track` odpowiada za kojarzenie obserwacji i utrzymanie ścieżki w czasie; `lib-vlm` za multimodalne modele językowe. Przechwytywanie obrazu jest opcjonalnym adapterem, a nie zarządzaniem całą aparaturą.
 
 ## Alternatywy
 
-- Implementacja wszystkiego w konsumentach: duplikacja i brak wspólnego kontraktu.
-- Jeden megaprojekt dla wszystkich sensorów i inferencji: rozmyte granice oraz nadmierne zależności.
+- Umieszczenie trackingu w `lib-vis`: utrudnia nieobrazowe trackingi i ponowne wykorzystanie trajektorii z ROS2.
+- Umieszczenie VLM w `lib-vis`: podwójny transport i kontrakt multimodalnej inferencji.
 
 ## Konsekwencje
 
-Osobne testy wersjonowanego API; żadne wsparcie sprzętowe nie jest zadeklarowane przed testem. Ryzyko utrzymania adapterów i konieczność synchronizacji wersji z konsumentami.
+Jeden format obserwacji geometrycznej, potrzeba jawnej kalibracji i testów z rzeczywistymi obrazami. Moduły pozostają planem do czasu ich implementacji i walidacji.

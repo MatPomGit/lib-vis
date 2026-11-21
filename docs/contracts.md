@@ -1,14 +1,19 @@
-# Docelowy kontrakt danych i API
+# Docelowy kontrakt danych Computer Vision
 
-**Status: PROPOSED / NOT_IMPLEMENTED.** `contracts/api.json` zachowuje puste `public_entrypoints`, ponieważ biblioteka nie udostępnia jeszcze wykonywalnych symboli.
+**PROPOSED / NOT_IMPLEMENTED.** Rejestr `contracts/api.json` celowo ma puste `public_entrypoints`.
 
-| Typ logiczny | Zakres pól | Kontrakt |
-| --- | --- | --- |
-| `Frame` | buffer/URI, width, height, pixel_format, timestamp_monotonic_s, source_id | PLANNED |
-| `StreamInfo` | frame_rate_hz, resolution_px, codec, calibration_ref, timebase | PLANNED |
-| `VisionTransform` | operation, parameters, interpolation, source_to_output geometry | PLANNED |
-| `QualityReport` | blur_metric, exposure_metric, dropped_frames, valid_flags | PLANNED |
+| Typ | Zakres pól / wymagania |
+| --- | --- |
+| `Frame` | `buffer_or_ref`, `width`, `height`, `pixel_format`, `timestamp_monotonic_s`, `source_id` |
+| `StreamInfo` | `frame_rate_hz`, `resolution_px`, `codec`, `calibration_ref?`, `timebase` |
+| `VisionTransform` | `operation`, `parameters`, `source_to_output_transform`, `interpolation` |
+| `CameraCalibration` | `intrinsics`, `distortion`, `extrinsics?`, `reprojection_error?`, `frame_id` |
+| `Detection2D` | `bbox_xywh_px`, `class_id?`, `confidence?`, `source_frame_ref` |
+| `Keypoints` | `points_xy_px`, `visibility?`, `source_frame_ref`, `model_version?` |
+| `SegmentationMask` | `mask_ref`, `labels`, `geometry`, `encoding` |
+| `GeometryResult` | `coordinate_frame`, `units`, `points_or_flow`, `calibration_ref?` |
+| `QualityReport` | `blur_metric`, `exposure_metric`, `dropped_frames`, `validity_flags` |
 
-Wspólne wymagania: jawne źródło danych i identyfikator żądania, model błędów (`INVALID_INPUT`, `UNAVAILABLE`, `TIMEOUT`, `UNSUPPORTED`, `DATA_LOSS`), limit bufora i granica odpowiedzialności za zapis. Jednostki muszą być określone w schemacie: piksele, klatki/s, sekundy monotoniczne, układ współrzędnych obrazu (początek w lewym górnym rogu).
+Przestrzeń obrazu: jednostka px, początek w lewym górnym rogu, jawnie określona orientacja osi. Przestrzeń metryczna: m, wymaga potwierdzonej kalibracji i `frame_id`. Confidence i błąd kalibracji są opcjonalne i nie mogą być wytwarzane sztucznie. Brak `track_id` w typach obserwacji: ścieżki należą do `lib-track`.
 
-Nie zakładać prawidłowego timestampu przy odbiorze. Zwracany status ma rozróżniać brak źródła, pusty wynik, niską jakość oraz brak danych. Wersjonowanie i publiczne symbole zostaną zatwierdzone przy pierwszej implementacji. Zmiana niekompatybilna po pojawieniu się odbiorców wymaga kontroli SemVer i migracji.
+Docelowe błędy: `INVALID_IMAGE`, `UNSUPPORTED_FORMAT`, `CALIBRATION_REQUIRED`, `FRAME_MISMATCH`, `TIMEOUT`, `DATA_LOSS`. Nie ma jeszcze działającego SDK ani kontraktów ABI.

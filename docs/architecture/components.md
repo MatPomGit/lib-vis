@@ -1,13 +1,18 @@
-# Moduły i odpowiedzialność
+# Moduły Computer Vision
 
-| Moduł | Zadanie | Ważny szczegół | Status |
-| --- | --- | --- | --- |
-| `lib_vis.capture` | Źródła klatek: kamery i pliki, kontrola buforów i timestampów | Otwarcie źródła wymaga jawnego device_id/URI; brak stałego zapisu w repo | PLANNED |
-| `lib_vis.formats` | Dekodowanie obrazu i konwersje przestrzeni barw | MIME, format pikseli, orientacja, rozdzielczość, metadane wejścia/wyjścia | PLANNED |
-| `lib_vis.transforms` | Skalowanie, kadrowanie, korekcja geometryczna i normalizacja | Zachowanie macierzy mapowania punktów i informacji o interpolacji | PLANNED |
-| `lib_vis.quality` | Ocena jakości klatki i strumienia | Rozmycie, ekspozycja, kompletność klatek, jawne progi pomiarowe | PLANNED |
-| `lib_vis.sync` | Znaczniki czasu, sekwencje, kolejki z ograniczeniem pamięci | Monotoniczny czas źródła i jawna niepewność synchronizacji | PLANNED |
+| Moduł | Odpowiedzialność | Status |
+| --- | --- | --- |
+| `lib_vis.capture` | Źródła obrazów, sekwencje i strumienie wideo | PLANNED |
+| `lib_vis.formats` | Dekodowanie i konwersje formatów obrazu | PLANNED |
+| `lib_vis.transforms` | Skalowanie, kadrowanie, normalizacja i przekształcenia | PLANNED |
+| `lib_vis.calibration` | Parametry kamer, dystorsja, geometria projekcji | PLANNED |
+| `lib_vis.features` | Cechy i punkty kluczowe obrazu | PLANNED |
+| `lib_vis.detection` | Detekcja obiektów i pozycji w pojedynczej klatce | PLANNED |
+| `lib_vis.segmentation` | Segmentacja semantyczna lub instancyjna jednej klatki | PLANNED |
+| `lib_vis.geometry` | Geometria 2D/3D, głębia i przepływ optyczny | PLANNED |
+| `lib_vis.quality` | Jakość obrazu, artefakty i kompletność | PLANNED |
+| `lib_vis.sync` | Znaczniki czasu, kolejność i buforowanie | PLANNED |
 
-Przetwarzanie obrazu i klatek bez inferencji językowej/VLM, estymacji ruchu ciała i sterowania urządzeniami. lib-vlm odpowiada za multimodalne modele, lib-track byłby właścicielem trackingu, a prywatny devices za konfiguracje aparatury.
+Kolejność implementacji nie wymaga jednoczesnego wsparcia wszystkich modułów. Podstawą jest jednoznaczny model `Frame` i `CoordinateFrame`. Detekcja i segmentacja generują obserwacje, które mogą trafiać do `lib-track`. `lib-vis` nie przydziela stałych identyfikatorów obiektom w kolejnych klatkach. Wsparcie VLM pozostaje w `lib-vlm`.
 
-Typy i wyjątki stanowią **propozycję** w [kontrakcie](../contracts.md). Nie tworzyć drugiej implementacji już dostępnego middleware lub modelu inferencji.
+[Kontrakty](../contracts.md) są projektowane, niezaimplementowane.

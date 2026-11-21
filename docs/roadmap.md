@@ -1,11 +1,12 @@
 # Roadmap lib-vis
 
-| Etap | Zakres | Kryterium | Status |
-| --- | --- | --- | --- |
-| D0 | Struktura i dokumentacja | Katalogi, kontrakty, granice, CI | IN_PROGRESS |
-| D1 | Minimalny model danych | Walidacja typów, jednostek i błędów | NOT_STARTED |
-| D2 | Jeden adapter / źródło | Mock, integracja, timeout, clean-install | NOT_STARTED |
-| D3 | Strumienie i synchronizacja | Backpressure, ordering, timestamp, utrata danych | NOT_STARTED |
-| D4 | E2E i konsument | Rzeczywiste źródło, SHA i protokół testowy | NOT_STARTED |
+| Etap | Przedmiot | Stan |
+| --- | --- | --- |
+| V0 | Struktura Computer Vision i kontrakty | IN_PROGRESS |
+| V1 | Model Frame i operacje formats/transforms | NOT_STARTED |
+| V2 | Kalibracja i geometria | NOT_STARTED |
+| V3 | Cechy, detekcja i segmentacja | NOT_STARTED |
+| V4 | Adapter strumienia, jakość i synchronizacja | NOT_STARTED |
+| V5 | Testy rzeczywistych obrazów i integracja z lib-track | NOT_STARTED |
 
-Nie uruchamiać implementacji w ciemno na stałym runnerze. Merge PR, release i publikacja Pages są oddzielnymi procesami; brak automatycznego wdrożenia.
+Wszystkie moduły są rozwojowe. Śledzenie międzyklatkowe i zarządzanie tożsamością pozostają w `lib-track`. Wydanie, wdrożenie Pages i testy sprzętowe wymagają odrębnej kontroli.
