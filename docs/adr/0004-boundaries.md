@@ -9,7 +9,7 @@ Przechwytywanie, dekodowanie, transformacje i kontrola jakości obrazu oraz stru
 
 ## Proponowana decyzja
 
-Przetwarzanie obrazu i klatek bez inferencji językowej/VLM, estymacji ruchu ciała i sterowania urządzeniami. lib-vlm odpowiada za multimodalne modele, lib-trac byłby właścicielem trackingu, a prywatny devices za konfiguracje aparatury. Repozytorium utrzymuje jedynie warstwę adaptacji i spójne metadane. Wykorzystuje istniejące SDK/backendy po weryfikacji ich licencji. Szczegóły jednostek: piksele, klatki/s, sekundy monotoniczne, układ współrzędnych obrazu (początek w lewym górnym rogu).
+Przetwarzanie obrazu i klatek bez inferencji językowej/VLM, estymacji ruchu ciała i sterowania urządzeniami. lib-vlm odpowiada za multimodalne modele, lib-track byłby właścicielem trackingu, a prywatny devices za konfiguracje aparatury. Repozytorium utrzymuje jedynie warstwę adaptacji i spójne metadane. Wykorzystuje istniejące SDK/backendy po weryfikacji ich licencji. Szczegóły jednostek: piksele, klatki/s, sekundy monotoniczne, układ współrzędnych obrazu (początek w lewym górnym rogu).
 
 ## Alternatywy
 

@@ -8,6 +8,6 @@
 | `lib_vis.quality` | Ocena jakości klatki i strumienia | Rozmycie, ekspozycja, kompletność klatek, jawne progi pomiarowe | PLANNED |
 | `lib_vis.sync` | Znaczniki czasu, sekwencje, kolejki z ograniczeniem pamięci | Monotoniczny czas źródła i jawna niepewność synchronizacji | PLANNED |
 
-Przetwarzanie obrazu i klatek bez inferencji językowej/VLM, estymacji ruchu ciała i sterowania urządzeniami. lib-vlm odpowiada za multimodalne modele, lib-trac byłby właścicielem trackingu, a prywatny devices za konfiguracje aparatury.
+Przetwarzanie obrazu i klatek bez inferencji językowej/VLM, estymacji ruchu ciała i sterowania urządzeniami. lib-vlm odpowiada za multimodalne modele, lib-track byłby właścicielem trackingu, a prywatny devices za konfiguracje aparatury.
 
 Typy i wyjątki stanowią **propozycję** w [kontrakcie](../contracts.md). Nie tworzyć drugiej implementacji już dostępnego middleware lub modelu inferencji.

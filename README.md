@@ -14,6 +14,6 @@ Przechwytywanie, dekodowanie, transformacje i kontrola jakości obrazu oraz stru
 | [quality](src/lib_vis/quality/README.md) | Ocena jakości klatki i strumienia | PLANNED |
 | [sync](src/lib_vis/sync/README.md) | Znaczniki czasu, sekwencje, kolejki z ograniczeniem pamięci | PLANNED |
 
-Przetwarzanie obrazu i klatek bez inferencji językowej/VLM, estymacji ruchu ciała i sterowania urządzeniami. lib-vlm odpowiada za multimodalne modele, lib-trac byłby właścicielem trackingu, a prywatny devices za konfiguracje aparatury.
+Przetwarzanie obrazu i klatek bez inferencji językowej/VLM, estymacji ruchu ciała i sterowania urządzeniami. lib-vlm odpowiada za multimodalne modele, lib-track byłby właścicielem trackingu, a prywatny devices za konfiguracje aparatury.
 
 Dokumentacja techniczna: [architektura](ARCHITECTURE.md), [kontrakt API](docs/contracts.md), [walidacja](docs/testing.md), [roadmap](docs/roadmap.md), [prywatność](docs/privacy.md). Rejestr publicznego API w [contracts/api.json](contracts/api.json) pozostaje pusty, dopóki nie powstanie kod. Nie opublikowano wydania ani Pages.

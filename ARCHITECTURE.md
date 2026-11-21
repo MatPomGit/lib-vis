@@ -4,7 +4,7 @@ Przechwytywanie, dekodowanie, transformacje i kontrola jakości obrazu oraz stru
 
 **Wejście:** jawnie nazwane źródło danych i jego konfiguracja. **Wyjście:** wersjonowany, zwalidowany rekord z metadanymi, czasem, jednostkami i statusem. Warstwy: `src/lib_vis/` → adapter sprzętu/systemu → kontrolowany odbiorca. Katalogi w `src/` zawierają obecnie tylko dokumentację planowanej implementacji.
 
-Przetwarzanie obrazu i klatek bez inferencji językowej/VLM, estymacji ruchu ciała i sterowania urządzeniami. lib-vlm odpowiada za multimodalne modele, lib-trac byłby właścicielem trackingu, a prywatny devices za konfiguracje aparatury.
+Przetwarzanie obrazu i klatek bez inferencji językowej/VLM, estymacji ruchu ciała i sterowania urządzeniami. lib-vlm odpowiada za multimodalne modele, lib-track byłby właścicielem trackingu, a prywatny devices za konfiguracje aparatury.
 
 Wspólny standard pomiarowy: piksele, klatki/s, sekundy monotoniczne, układ współrzędnych obrazu (początek w lewym górnym rogu). Konwersje jednostek i czasu muszą być jawne; brak niezbędnych metadanych skutkuje błędem zamiast niejawnego przybliżenia.
 
