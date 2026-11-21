@@ -1,9 +1,5 @@
-# Budowanie, pakowanie i dystrybucja
+# Dystrybucja
 
-**Stan: NOT_RELEASED.** W szablonie nie wybrano menedżera pakietów ani registry.
+Proponowany pakiet Python: `lib-vis`, źródła `src/lib_vis/`. Obecnie brak `pyproject.toml`, importowalnych modułów i opublikowanego wydania. Foldery są dokumentacją, nie zbudowanym pakietem.
 
-Po wyborze profilu npm, Maven, NuGet, Python, Unity UPM lub OCI udokumentuj rzeczywisty runtime, wersje, narzędzia build, manifest/lockfile, licencje, hashe i metadane pakietu. Przetestuj instalację w czystym środowisku i zgodność z odbiorcami.
-
-**Nie utożsamiaj** zielonego CI, zbudowanego artefaktu, podpisanego release, publikacji do registry oraz zweryfikowanego wdrożenia. Każdy etap wymaga odrębnego dowodu i uprawnień.
-
-Powiązania: [wydania](../releases.md), [supply-chain](../security/supply-chain.md), [runbook](../operations/runbook.md).
+Przed wydaniem konieczne: wybór licencji, walidacja źródeł SDK, deterministyczny build, clean-install, smoke test, zewnętrzny audit bezpieczeństwa, test docelowego środowiska i decyzja właściciela. `pages/` pozostaje oddzielne i nie jest publikowane przez samo scalenie PR.

@@ -1,19 +1,13 @@
-# Architektura biblioteki
+# Architektura lib-vis
 
-**Status:** szablon nie zawiera gotowego produktu. Identyfikatory i komponenty należy zdefiniować przed implementacją.
+Przechwytywanie, dekodowanie, transformacje i kontrola jakości obrazu oraz strumieni wideo.
 
-- **Source of truth:** to repozytorium jest jedynym właścicielem kodu i publicznego kontraktu.
-- **Upstream:** zależności przypięte do wersji i SHA/digest; aktualność sprawdzana przez Research Autopilot.
-- **Downstream:** `msc-*` i inne narzędzia odwołują się do wydania lub ustalonego SHA, nie kopiują źródeł.
-- **Boundary:** adaptery sprzętowe, rendering i I/O oddzielone od logiki domenowej, gdy dotyczy.
-- **Reproduce:** zdefiniowany lockfile, wersje zależności i parametry.
-- **Audit live:** odczyt aktualnego HEAD i porównanie z przypiętym SHA. Zmiany via PR, bez cichego nadpisywania.
+**Wejście:** jawnie nazwane źródło danych i jego konfiguracja. **Wyjście:** wersjonowany, zwalidowany rekord z metadanymi, czasem, jednostkami i statusem. Warstwy: `src/lib_vis/` → adapter sprzętu/systemu → kontrolowany odbiorca. Katalogi w `src/` zawierają obecnie tylko dokumentację planowanej implementacji.
 
-Pełne kontrakty i macierz środowisk opisano w `docs/` i `config/component.json`.
+Przetwarzanie obrazu i klatek bez inferencji językowej/VLM, estymacji ruchu ciała i sterowania urządzeniami. lib-vlm odpowiada za multimodalne modele, lib-trac byłby właścicielem trackingu, a prywatny devices za konfiguracje aparatury.
 
+Wspólny standard pomiarowy: piksele, klatki/s, sekundy monotoniczne, układ współrzędnych obrazu (początek w lewym górnym rogu). Konwersje jednostek i czasu muszą być jawne; brak niezbędnych metadanych skutkuje błędem zamiast niejawnego przybliżenia.
 
-## Dokumentacja rozwijanej biblioteki
+Szczegóły: [komponenty](docs/architecture/components.md), [przepływy danych](docs/architecture/data-flow.md), [kontrakt](docs/contracts.md), [ADR-0004](docs/adr/0004-boundaries.md).
 
-Po powstaniu kodu opisz **realne** moduły, publiczne API, wersje ABI, granice I/O i adaptery w [components](docs/architecture/components.md), [data-flow](docs/architecture/data-flow.md) i [distribution](docs/architecture/distribution.md). [ADR](docs/adr/README.md) zapisują uzasadnienia decyzji, a [model zagrożeń](docs/security/threat-model.md) rzeczywiste ryzyka i dowody ich kontroli.
-
-Publikacja dokumentacji jako GitHub Pages korzysta **wyłącznie** z `pages/`, nigdy z `docs/` ([polityka](docs/pages.md)). Brak wdrożonej funkcji oznacza stan `NOT_IMPLEMENTED`, a nie domyślny `PASS`.
+**Status:** architektura PROPOSED; implementacja NOT_IMPLEMENTED, E2E NOT_RUN, release NOT_RELEASED.

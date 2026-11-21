@@ -1,11 +1,13 @@
-# Komponenty i interfejsy
+# Moduły i odpowiedzialność
 
-**Stan: NOT_DEFINED.** Nie istnieją moduły produkcyjne w szablonie.
-
-| Moduł | Źródła | Kontrakt API | Dowód |
+| Moduł | Zadanie | Ważny szczegół | Status |
 | --- | --- | --- | --- |
-| Brak gotowego modułu | NOT_APPLICABLE | [contracts/api.json](../../contracts/api.json) | NOT_RUN |
+| `lib_vis.capture` | Źródła klatek: kamery i pliki, kontrola buforów i timestampów | Otwarcie źródła wymaga jawnego device_id/URI; brak stałego zapisu w repo | PLANNED |
+| `lib_vis.formats` | Dekodowanie obrazu i konwersje przestrzeni barw | MIME, format pikseli, orientacja, rozdzielczość, metadane wejścia/wyjścia | PLANNED |
+| `lib_vis.transforms` | Skalowanie, kadrowanie, korekcja geometryczna i normalizacja | Zachowanie macierzy mapowania punktów i informacji o interpolacji | PLANNED |
+| `lib_vis.quality` | Ocena jakości klatki i strumienia | Rozmycie, ekspozycja, kompletność klatek, jawne progi pomiarowe | PLANNED |
+| `lib_vis.sync` | Znaczniki czasu, sekwencje, kolejki z ograniczeniem pamięci | Monotoniczny czas źródła i jawna niepewność synchronizacji | PLANNED |
 
-Po wdrożeniu kodu zapisz rzeczywiste moduły, ich odpowiedzialność, publiczne symbole, typy, semantykę błędów, jednostki, zależności i wersję API/ABI. Zmiany niekompatybilne wymagają osobnego planu migracji oraz testów odbiorców.
+Przetwarzanie obrazu i klatek bez inferencji językowej/VLM, estymacji ruchu ciała i sterowania urządzeniami. lib-vlm odpowiada za multimodalne modele, lib-trac byłby właścicielem trackingu, a prywatny devices za konfiguracje aparatury.
 
-Zobacz [kompatybilność](../compatibility.md), [konsumentów](../consumers.md) i [ADR](../adr/README.md). Nie kopiuj implementacji ani całego kontraktu do tego opisu.
+Typy i wyjątki stanowią **propozycję** w [kontrakcie](../contracts.md). Nie tworzyć drugiej implementacji już dostępnego middleware lub modelu inferencji.

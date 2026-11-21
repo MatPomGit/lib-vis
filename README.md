@@ -1,34 +1,19 @@
-# REPLACE_LIB_TITLE
+# lib-vis
 
-**Rodzaj:** `lib-*` · **Etap:** scaffold · **API:** eksperymentalne, niewydane.  
-**Autor podstawowy:** Mateusz Pomianek; opcjonalni współautorzy po potwierdzeniu wkładu.
+Przechwytywanie, dekodowanie, transformacje i kontrola jakości obrazu oraz strumieni wideo.
 
-Repozytorium definiuje jeden komponent wielokrotnego użytku, z jawnie wersjonowanym kontraktem.
-Warto tworzyć osobną bibliotekę dopiero, gdy istnieje rzeczywiste współużycie albo niezależny cykl życia i wersjonowania.
+**Status:** architektura i struktura źródeł, **NOT_IMPLEMENTED**. To biblioteka planowana, bez zainstalowanego pakietu, urządzeń podłączonych do testów i wydania.
 
-## Publiczny interfejs
+## Moduły
 
-[docs/contracts.md](docs/contracts.md), [contracts/api.json](contracts/api.json).
+| Moduł | Zakres | Status |
+| --- | --- | --- |
+| [capture](src/lib_vis/capture/README.md) | Źródła klatek: kamery i pliki, kontrola buforów i timestampów | PLANNED |
+| [formats](src/lib_vis/formats/README.md) | Dekodowanie obrazu i konwersje przestrzeni barw | PLANNED |
+| [transforms](src/lib_vis/transforms/README.md) | Skalowanie, kadrowanie, korekcja geometryczna i normalizacja | PLANNED |
+| [quality](src/lib_vis/quality/README.md) | Ocena jakości klatki i strumienia | PLANNED |
+| [sync](src/lib_vis/sync/README.md) | Znaczniki czasu, sekwencje, kolejki z ograniczeniem pamięci | PLANNED |
 
-## Zależności i kompatybilność
+Przetwarzanie obrazu i klatek bez inferencji językowej/VLM, estymacji ruchu ciała i sterowania urządzeniami. lib-vlm odpowiada za multimodalne modele, lib-trac byłby właścicielem trackingu, a prywatny devices za konfiguracje aparatury.
 
-[docs/compatibility.md](docs/compatibility.md), [docs/consumers.md](docs/consumers.md).
-
-## Walidacja szkieletu
-
-```bash
-python scripts/validate_repository.py --phase scaffold
-python scripts/validate_documentation.py
-python scripts/validate_pages.py
-python -m unittest discover -s tests -v
-```
-
-Zacznij od [TEMPLATE_SETUP.md](TEMPLATE_SETUP.md). GitHub Packages jest opcjonalnym kanałem zależnym od ekosystemu.
-
-## Audyt i kontrole jakości
-
-Zobacz [audyt szablonu z 2026-11-19](reviews/2026-11-19-template-audit.md) i plan działań P0–P2. Publiczne repozytoria mogą korzystać z GitHub-hosted runners. Szablon zawiera minimalny [workflow Scaffold CI](.github/workflows/ci.yml) z walidacją metadanych i testami regresyjnymi; nie buduje ani nie publikuje pakietów.
-
-## Architektura i bezpieczeństwo
-
-[Architektura](ARCHITECTURE.md), [ADR](docs/adr/README.md), [model zagrożeń](docs/security/threat-model.md), [łańcuch dostaw](docs/security/supply-chain.md), [zarządzanie](GOVERNANCE.md) i [limity dokumentacji](docs/documentation.md). Publiczna dokumentacja API korzysta tylko z `pages/` ([Pages](docs/pages.md)); `docs/` pozostaje wewnętrzne. [Wydania LIB](docs/releases.md) wymagają osobnej autoryzacji.
+Dokumentacja techniczna: [architektura](ARCHITECTURE.md), [kontrakt API](docs/contracts.md), [walidacja](docs/testing.md), [roadmap](docs/roadmap.md), [prywatność](docs/privacy.md). Rejestr publicznego API w [contracts/api.json](contracts/api.json) pozostaje pusty, dopóki nie powstanie kod. Nie opublikowano wydania ani Pages.
