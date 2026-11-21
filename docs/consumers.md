@@ -1,5 +1,8 @@
-# Odbiorcy i zależności
+# Potencjalni odbiorcy
 
-Wymień znane repozytoria `msc-*`, `app-*` i `lib-*`, które rzeczywiście wykorzystują komponent.
-Dla każdego zapisz `repository`, `version/tag/SHA`, rodzaj integracji, kontrakt i plan migracji.
-Nie wpisuj fikcyjnych odbiorców dla spełnienia szablonu. Brak odbiorcy jest zgodnym statusem projektu rozwojowego.
+- lib-eye (przygotowanie klatek, bez wyznaczania spojrzenia): **PROPOSED**, bez potwierdzonego wdrożenia.
+- lib-exp (bodźce i wideo eksperymentalne): **PROPOSED**, bez potwierdzonego wdrożenia.
+- lib-vlm (przygotowanie obrazu do inferencji): **PROPOSED**, bez potwierdzonego wdrożenia.
+- ARC-Robo (telemetria wizualna robota): **PROPOSED**, bez potwierdzonego wdrożenia.
+
+Obecnie nie istnieje potwierdzony konsument z przypiętą wersją biblioteki. Przy pierwszym użyciu zapisać repozytorium, wersję/SHA, typ kontraktu i dowód testu integracyjnego.

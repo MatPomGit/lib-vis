@@ -1,8 +1,9 @@
-# Dokumentacja wewnętrzna biblioteki
+# Dokumentacja techniczna lib-vis
 
-To dokumentacja inżynierska, **nie** źródło publicznych GitHub Pages. Strona używa oddzielnego `pages/`.
+Przechwytywanie, dekodowanie, transformacje i kontrola jakości obrazu oraz strumieni wideo. Status: **NOT_IMPLEMENTED**.
 
-- [Architektura](architecture/README.md), [moduły](architecture/components.md), [dystrybucja](architecture/distribution.md).
-- [Kontrakty](contracts.md), [kompatybilność](compatibility.md), [odbiorcy](consumers.md), [zależności](dependencies.md).
-- [Bezpieczeństwo](security/threat-model.md), [supply-chain](security/supply-chain.md), [incydenty](security/incident-response.md).
-- [ADR](adr/README.md), [runbook](operations/runbook.md), [limity dokumentacji](documentation.md), [Pages](pages.md), [wydania](releases.md).
+- [Architektura](architecture/README.md), [komponenty](architecture/components.md), [przepływy danych](architecture/data-flow.md), [dystrybucja](architecture/distribution.md).
+- [Kontrakt](contracts.md), [zgodność](compatibility.md), [zależności](dependencies.md), [konsumenci](consumers.md).
+- [Testy](testing.md), [roadmap](roadmap.md), [instalacja](installation.md), [prywatność](privacy.md), [ADR-0004](adr/0004-boundaries.md).
+
+Źródłem ewentualnych publicznych Pages jest osobny katalog `pages/`, nie `docs/`.

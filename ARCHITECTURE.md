@@ -1,19 +1,21 @@
-# Architektura biblioteki
+# Architektura lib-vis
 
-**Status:** szablon nie zawiera gotowego produktu. Identyfikatory i komponenty należy zdefiniować przed implementacją.
+`lib-vis` to domenowo neutralna biblioteka **computer vision**. Łączy akwizycję obrazu, dekodowanie, transformacje, kalibrację, ekstrakcję cech, detekcję, segmentację oraz geometrię i analizę jakości.
 
-- **Source of truth:** to repozytorium jest jedynym właścicielem kodu i publicznego kontraktu.
-- **Upstream:** zależności przypięte do wersji i SHA/digest; aktualność sprawdzana przez Research Autopilot.
-- **Downstream:** `msc-*` i inne narzędzia odwołują się do wydania lub ustalonego SHA, nie kopiują źródeł.
-- **Boundary:** adaptery sprzętowe, rendering i I/O oddzielone od logiki domenowej, gdy dotyczy.
-- **Reproduce:** zdefiniowany lockfile, wersje zależności i parametry.
-- **Audit live:** odczyt aktualnego HEAD i porównanie z przypiętym SHA. Zmiany via PR, bez cichego nadpisywania.
+```text
+Kamera / plik / strumień
+        |
+ capture → formats → transforms / calibration
+        |
+    features / detection / segmentation / geometry
+        |
+       quality + sync
+        |
+Obserwacje 2D/3D dla aplikacji, lib-track lub lib-vlm
+```
 
-Pełne kontrakty i macierz środowisk opisano w `docs/` i `config/component.json`.
+Detekcja pozycji i sylwetek w pojedynczej klatce należy do `lib-vis`; długotrwałe wiązanie obserwacji z jednym `track_id` należy do `lib-track`. Model VLM odpowiada za interpretację multimodalną w `lib-vlm`, nie za geometrię kamery. `lib-vis` może korzystać z OpenCV lub innych silników detekcji poprzez opcjonalne adaptery; biblioteka nie implementuje własnego silnika głębokiej inferencji.
 
+Wszystkie operacje powinny ujawniać układ współrzędnych, rozmiar źródła, jednostki px/m, kalibrację (gdy potrzebna), timestamp i niepewność pomiarową. Sam obraz nie pozwala wnioskować o fizycznej skali 3D bez odpowiedniej kalibracji i metody rekonstrukcji.
 
-## Dokumentacja rozwijanej biblioteki
-
-Po powstaniu kodu opisz **realne** moduły, publiczne API, wersje ABI, granice I/O i adaptery w [components](docs/architecture/components.md), [data-flow](docs/architecture/data-flow.md) i [distribution](docs/architecture/distribution.md). [ADR](docs/adr/README.md) zapisują uzasadnienia decyzji, a [model zagrożeń](docs/security/threat-model.md) rzeczywiste ryzyka i dowody ich kontroli.
-
-Publikacja dokumentacji jako GitHub Pages korzysta **wyłącznie** z `pages/`, nigdy z `docs/` ([polityka](docs/pages.md)). Brak wdrożonej funkcji oznacza stan `NOT_IMPLEMENTED`, a nie domyślny `PASS`.
+Opis szczegółowy: [komponenty](docs/architecture/components.md), [przepływ danych](docs/architecture/data-flow.md), [kontrakty](docs/contracts.md), [ADR-0004](docs/adr/0004-boundaries.md). **Implementacja NOT_IMPLEMENTED; E2E NOT_RUN.**

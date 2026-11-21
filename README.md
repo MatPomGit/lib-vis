@@ -1,34 +1,26 @@
-# REPLACE_LIB_TITLE
+# lib-vis
 
-**Rodzaj:** `lib-*` · **Etap:** scaffold · **API:** eksperymentalne, niewydane.  
-**Autor podstawowy:** Mateusz Pomianek; opcjonalni współautorzy po potwierdzeniu wkładu.
+**Computer vision:** biblioteka akwizycji, przetwarzania i analizy obrazów oraz strumieni wideo, obejmująca także detekcję, segmentację i geometrię komputerowego widzenia.
 
-Repozytorium definiuje jeden komponent wielokrotnego użytku, z jawnie wersjonowanym kontraktem.
-Warto tworzyć osobną bibliotekę dopiero, gdy istnieje rzeczywiste współużycie albo niezależny cykl życia i wersjonowania.
+**Status: ARCHITECTURE_ONLY / NOT_IMPLEMENTED / NOT_RELEASED.** Moduły są zaprojektowane, lecz nie istnieje wykonywalny pakiet.
 
-## Publiczny interfejs
+## Moduły
 
-[docs/contracts.md](docs/contracts.md), [contracts/api.json](contracts/api.json).
+| Moduł | Zakres | Status |
+| --- | --- | --- |
+| [capture](src/lib_vis/capture/README.md) | Źródła obrazów, sekwencje i strumienie wideo | PLANNED |
+| [formats](src/lib_vis/formats/README.md) | Dekodowanie i konwersje formatów obrazu | PLANNED |
+| [transforms](src/lib_vis/transforms/README.md) | Skalowanie, kadrowanie, normalizacja i przekształcenia | PLANNED |
+| [calibration](src/lib_vis/calibration/README.md) | Parametry kamer, dystorsja, geometria projekcji | PLANNED |
+| [features](src/lib_vis/features/README.md) | Cechy i punkty kluczowe obrazu | PLANNED |
+| [detection](src/lib_vis/detection/README.md) | Detekcja obiektów i pozycji w pojedynczej klatce | PLANNED |
+| [segmentation](src/lib_vis/segmentation/README.md) | Segmentacja semantyczna lub instancyjna jednej klatki | PLANNED |
+| [geometry](src/lib_vis/geometry/README.md) | Geometria 2D/3D, głębia i przepływ optyczny | PLANNED |
+| [quality](src/lib_vis/quality/README.md) | Jakość obrazu, artefakty i kompletność | PLANNED |
+| [sync](src/lib_vis/sync/README.md) | Znaczniki czasu, kolejność i buforowanie | PLANNED |
 
-## Zależności i kompatybilność
+`lib-vis` odpowiada za obserwacje obrazu w pojedynczych klatkach i pomiary geometryczne. **Wieloobiektowy tracking, identyfikatory ścieżek, ich kojarzenie i historię ruchu utrzymuje `lib-track`.** Inferencję językowo-wizualną i modele multimodalne obsługuje `lib-vlm`; `lib-sig` odpowiada za ogólne DSP; prywatne `devices` zawiera kontrakty aparatury.
 
-[docs/compatibility.md](docs/compatibility.md), [docs/consumers.md](docs/consumers.md).
+[Architektura](ARCHITECTURE.md) · [Kontrakt API](docs/contracts.md) · [Plan testów](docs/testing.md) · [Roadmap](docs/roadmap.md).
 
-## Walidacja szkieletu
-
-```bash
-python scripts/validate_repository.py --phase scaffold
-python scripts/validate_documentation.py
-python scripts/validate_pages.py
-python -m unittest discover -s tests -v
-```
-
-Zacznij od [TEMPLATE_SETUP.md](TEMPLATE_SETUP.md). GitHub Packages jest opcjonalnym kanałem zależnym od ekosystemu.
-
-## Audyt i kontrole jakości
-
-Zobacz [audyt szablonu z 2026-11-19](reviews/2026-11-19-template-audit.md) i plan działań P0–P2. Publiczne repozytoria mogą korzystać z GitHub-hosted runners. Szablon zawiera minimalny [workflow Scaffold CI](.github/workflows/ci.yml) z walidacją metadanych i testami regresyjnymi; nie buduje ani nie publikuje pakietów.
-
-## Architektura i bezpieczeństwo
-
-[Architektura](ARCHITECTURE.md), [ADR](docs/adr/README.md), [model zagrożeń](docs/security/threat-model.md), [łańcuch dostaw](docs/security/supply-chain.md), [zarządzanie](GOVERNANCE.md) i [limity dokumentacji](docs/documentation.md). Publiczna dokumentacja API korzysta tylko z `pages/` ([Pages](docs/pages.md)); `docs/` pozostaje wewnętrzne. [Wydania LIB](docs/releases.md) wymagają osobnej autoryzacji.
+Wszystkie funkcje są planowane. Nie opublikowano API, instalowalnego pakietu ani wydania.

@@ -1,11 +1,5 @@
-# Architektura biblioteki
+# Architektura lib-vis
 
-[ARCHITECTURE.md](../../ARCHITECTURE.md) jest krótkim przeglądem systemu. Szczegóły przechowuj wyłącznie tutaj, nie powielając kontraktów `contracts/api.json`.
+Przegląd systemu: [ARCHITECTURE.md](../../ARCHITECTURE.md). [Komponenty](components.md) opisują moduły; [przepływy](data-flow.md) definiują wymianę danych i granice zaufania; [dystrybucja](distribution.md) rozróżnia pakiet i wydanie.
 
-- [Komponenty](components.md): rzeczywiste moduły, granice i API.
-- [Przepływy](data-flow.md): wejścia, serializacja, wyjścia i uprawnienia.
-- [Dystrybucja](distribution.md): build, pakiet, instalacja i wydanie.
-- [ADR](../adr/README.md): uzasadnienia istotnych decyzji.
-- [Model zagrożeń](../security/threat-model.md): ryzyka i dowody kontroli.
-
-**Stan: NOT_IMPLEMENTED.** Wraz z pierwszym działającym modułem podaj rzeczywistą ścieżkę kodu, kontrakt, test i wspierane środowisko. Nie opisuj planu jako zweryfikowanej implementacji.
+Status: **PROPOSED / NOT_IMPLEMENTED**. Żaden planowany moduł nie jest jeszcze gotowym API.

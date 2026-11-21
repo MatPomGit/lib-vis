@@ -1,5 +1,3 @@
-# Kod źródłowy
+# Planowana struktura źródeł
 
-Docelowy układ zależy od platformy; ten katalog nie zawiera działającego produktu.
-W przypadku UPM poprawnym korzeniem może być `Runtime/` i `Editor/`, dla Androida `app/src`, dla web `src/`, a dla Pythona `src/<package>/`.
-Pozostań przy jednym kanonicznym właścicielu źródeł.
+Planowany pakiet `lib_vis` ma katalog w [lib_vis/](lib_vis/README.md). Katalogi zawierają wyłącznie dokumentację; **nie istnieje jeszcze instalowalna biblioteka**.

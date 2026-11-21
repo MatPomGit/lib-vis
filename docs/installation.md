@@ -1,5 +1,5 @@
 # Instalacja
 
-Uzupełnij **po** wdrożeniu konkretnego stosu technologicznego. Opisz wymagania systemu, instrukcję środowiska izolowanego, sposób użycia stabilnego wydania i sprawdzenie checksum.
-Przykłady mają używać przypiętej wersji, tagu lub SHA, nie przypadkowego HEAD.
-Zależności nie są instalowane automatycznie podczas walidacji szablonu.
+**Brak instalowalnego pakietu.** Repozytorium zawiera zaprojektowane moduły w formie opisów, bez runtime, manifestu pakietu, SDK i wydania.
+
+Po zaimplementowaniu klienta wymagane są Python 3.11+, izolowana instalacja z przypiętego SHA/wydania, zweryfikowane zależności, jawna konfiguracja źródła oraz test minimalnego odczytu. Konfiguracji urządzeń i haseł nie przechowywać w publicznym repo.
